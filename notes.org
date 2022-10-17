@@ -1,0 +1,5 @@
+* Related Notes
+<2022-10-17 Mon 18:57>: This is the command I used to create the corresponding app:
+#+begin_src bash
+rails new cheese-shop --skip--javascript
+#+end_src
