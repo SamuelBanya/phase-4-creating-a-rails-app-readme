@@ -3,3 +3,51 @@
 #+begin_src bash
 rails new cheese-shop --skip--javascript
 #+end_src
+
+I then ran the application with the following 'rails s' command, related output:
+#+begin_src bash
+samuelbanya@Samuels-MBP ~/hub/Development/code/phase-4/phase-4-creating-a-rails-app-readme/cheese-shop $ rails s
+The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
+=> Booting Puma
+=> Rails 7.0.4 application starting in development
+=> Run `bin/rails server --help` for more startup options
+Puma starting in single mode...
+* Puma version: 5.6.5 (ruby 2.7.0-p0) ("Birdie's Version")
+*  Min threads: 5
+*  Max threads: 5
+*  Environment: development
+*          PID: 70778
+* Listening on http://127.0.0.1:3000
+* Listening on http://[::1]:3000
+Use Ctrl-C to stop
+#+end_src
+
+I then created a related route in the 'config/routes.rb' file:
+#+begin_src ruby
+# config/routes.rb
+Rails.application.routes.draw do
+  get "/cheese", to: "cheese#index"
+end
+#+end_src
+
+I then created the 'app/controllers/cheese_controller.rb' file with the following contents:
+#+begin_src ruby
+  class CheeseController < ApplicationController
+    def index
+    end
+  end
+#+end_src
+
+I then created a new file 'app/views/cheese/index.html.erb' with the following contents:
+#+begin_src html
+<h1>Hello Cheese World!</h1>
+#+end_src
+
+I then updated the controller to return a JSON response in the 'app/controllers/cheese_controller.rb' file:
+#+begin_src ruby
+  class CheeseController < ApplicationController
+    def index
+      render json: { hello: "Cheese World "}
+    end
+  end
+#+end_src
